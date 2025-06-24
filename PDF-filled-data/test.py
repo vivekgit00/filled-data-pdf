@@ -32,7 +32,7 @@ if alias is not None and alias != "":
 dob = form_data[0]['DateOfBirth']
 if dob is not None and dob != "":
     draw_text_in_boxes(115, 546, dob.split("-")[0])
-    draw_text_in_boxes(163, 546, dob.split("-")[1])
+    draw_text_in_boxes(161, 546, dob.split("-")[1])
     draw_text_in_boxes(210, 546, dob.split("-")[2])
 
 male = form_data[0]['GenderM']
@@ -84,16 +84,16 @@ if SpouseOthers is not None and SpouseOthers != "":
 
 CountryOfBirth = form_data[0]['CountryOfBirth']
 if CountryOfBirth is not None and CountryOfBirth != "":
-    draw_text_in_boxes(143, 398, CountryOfBirth)
+    draw_text_in_boxes(143, 398, CountryOfBirth.upper())
 StateOfBirth = form_data[0]['StateOfBirth']
 if StateOfBirth is not None and StateOfBirth != "":
     draw_text_in_boxes(143, 373, StateOfBirth.upper())
 RaceName = form_data[0]['RaceName']
 if RaceName is not None and RaceName != "":
-    draw_text_in_boxes(143, 346, RaceName)
+    draw_text_in_boxes(143, 346, RaceName.upper())
 NationalityName = form_data[0]['NationalityName']
 if NationalityName is not None and NationalityName != "":
-    draw_text_in_boxes(143, 321, NationalityName)
+    draw_text_in_boxes(143, 321, NationalityName.upper())
 
 InternationalPassport = form_data[0]['InternationalPassport']
 if InternationalPassport is True and InternationalPassport != "":
@@ -134,11 +134,36 @@ if ExpiryDate is not None and ExpiryDate != "":
     draw_text_in_boxes(496, 186, ExpiryDate.split("-")[2])
 PassportOfIssue = form_data[0]['PassportOfIssue']
 if PassportOfIssue is not None and PassportOfIssue != "":
-    draw_text_in_boxes(141, 145, PassportOfIssue)
+    draw_text_in_boxes(141, 145, PassportOfIssue.upper())
 
-
+PRCIDNo = form_data[0]['PRCIDNo']
+if PRCIDNo is not None and PRCIDNo != "":
+    draw_text_in_boxes(141, 94, PRCIDNo[:18])
 
 c.showPage()
+
+CountryOfResidence = form_data[0]['CountryOfResidence']
+if CountryOfResidence is not None and CountryOfResidence != "":
+    draw_text_in_boxes(141, 757, CountryOfResidence[:25].upper())
+
+DivisonOfResidence = form_data[0]['DivisonOfResidence']
+if DivisonOfResidence is not None and DivisonOfResidence != "":
+    draw_text_in_boxes(141, 723, DivisonOfResidence[:25].upper())
+
+PerfectureofResidence = form_data[0]['PerfectureofResidence']
+if PerfectureofResidence is not None and PerfectureofResidence != "":
+    draw_text_in_boxes(141, 689, PerfectureofResidence[:25].upper())
+
+DistrictofResidence = form_data[0]['DistrictofResidence']
+if DistrictofResidence is not None and DistrictofResidence != "":
+    draw_text_in_boxes(141, 659, DistrictofResidence[:25].upper())
+
+CountryAddressData = form_data[0]['CountryAddressData']
+if CountryAddressData is not None and CountryAddressData != "":
+    c.setFont("Helvetica", 8)
+    c.drawString(75, 623, CountryAddressData.upper())
+    c.setFont("Helvetica", 12)
+
 
 ApplicantEmailID = form_data[0]['ApplicantEmailID']
 if ApplicantEmailID is not None and ApplicantEmailID != "":
@@ -207,7 +232,7 @@ if PurposeSocial is True and PurposeSocial != "":
 PurposeDetails = form_data[0]['PurposeDetails']
 if PurposeDetails is not None and PurposeDetails != "":
     c.setFontSize(10)
-    c.drawString(125, 277, PurposeDetails[:70])
+    c.drawString(125, 277, PurposeDetails[:100])
 
 StayUnder30 = form_data[0]['StayUnder30']
 if StayUnder30 is True and StayUnder30 != "":
@@ -218,9 +243,9 @@ if StayOver30 is True and StayOver30 != "":
 LongStayInfo = form_data[0]['LongStayInfo']
 if LongStayInfo is not None and LongStayInfo != "":
     c.setFontSize(8)
-    c.drawString(35, 190, LongStayInfo[:70].upper())
-    c.drawString(35, 172, LongStayInfo[70:140].upper())
-    c.drawString(35, 154, LongStayInfo[140:210].upper())
+    c.drawString(35, 190, LongStayInfo[:110].upper())
+    c.drawString(35, 172, LongStayInfo[110:210].upper())
+    c.drawString(35, 154, LongStayInfo[210:260].upper())
     # c.drawString(35, 136, LongStayInfo[450:600].upper())
 
 c.showPage()
@@ -265,8 +290,8 @@ if ContactNo is not None and ContactNo != "":
     c.drawString(500, 677, ContactNo)
 BuildingName = form_data[0]['BuildingName']
 if BuildingName is not None and BuildingName != "":
-    c.setFont("Helvetica", 10)
-    c.drawString(99, 647, BuildingName[:60].upper())
+    c.setFont("Helvetica", 8)
+    c.drawString(99, 647, BuildingName[:100].upper())
     c.setFont("Helvetica", 12)
 ResidedYes = form_data[0]['ResidedYes']
 if ResidedYes is True and ResidedYes != "":
@@ -278,15 +303,17 @@ if ResidedYes is True and ResidedYes != "":
         c.drawString(60, 520, CountryPlace)
     Address = form_data[0]['ResidenceDetails'][0]['Address']
     if Address is not None and Address != "":
-        c.drawString(240, 520, Address)
+        c.drawString(216, 520, Address[:30].upper())
+        c.drawString(216, 508, Address[30:60].upper())
     From = form_data[0]['ResidenceDetails'][0]['From']
     if From is not None and From != "":
-        c.drawString(470, 520, From)
+        c.drawString(475, 520, From)
     To = form_data[0]['ResidenceDetails'][0]['To']
     if To is not None and To != "":
-        c.drawString(540, 520, To)
+        c.drawString(539, 520, To)
     c.setFont("Helvetica", 12)
 ResidedNo = form_data[0]['ResidedNo']
+
 if ResidedNo is True and ResidedNo != "":
     c.drawString(112, 590, check)
 
